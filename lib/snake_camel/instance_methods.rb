@@ -1,10 +1,14 @@
 require 'snake_camel/methods'
 
 module SnakeCamel
-module InstanceMethods
+  module InstanceMethods
 
-  def to_snake
-    SnakeCamel::Methods.to_snake(self)
+    def snakecase
+      SnakeCamel::Methods.snakecase(self)
+    end
+
+    def camelcase
+      SnakeCamel::Methods.camelcase(self)
+    end
   end
-end
 end

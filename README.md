@@ -1,8 +1,6 @@
 # SnakeCamel
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/snake_camel`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This Gem provides several ways for conversation between CamalCase and snake_case.
 
 ## Installation
 
@@ -20,20 +18,62 @@ Or install it yourself as:
 
     $ gem install snake_camel
 
+
 ## Usage
 
-TODO: Write usage instructions here
+  You have several ways to use it, it's pretty simple. Choose one, based on your need!
 
-## Development
+  - If you don't care about the 'how':
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+  ```ruby
+  require 'snake_camel'
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+  'SnakeCamel'.snakecase #=> 'snake_camel'
+
+  or
+
+  'snake_camel'.camelcase #=> 'SnakeCamel'
+  ```
+
+  - If you don't want to monkey-patch your String class:
+
+```ruby
+require 'snake_camel/instance_methods'
+
+foo = 'FooBar'
+foo.extend SnakeCamel::InstanceMethods
+
+foo.snakecase #=> foo_bar
+
+or
+
+foo = 'foo_bar'
+foo.extend SnakeCamel::InstanceMethods
+
+foo.camelcase #=> FooBar
+```
+- And you can use it like a regular method:
+
+```ruby
+require 'snake_camel/methods'
+
+SnakeCamel::Methods.snakecase('FooBar') #=> foo_bar
+
+SnakeCamel::Methods.camelcase('foo_bar') #=> FooBar
+```
+
+## Creator's notes
+
+I know there are other gems that provide the same functionality as SnakeCamel, but I want to create something more gentle, more simple.
+
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/snake_camel. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
-
+1. Fork it ( https://github.com/[my-github-username]/snake_camel/fork )
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -am 'Add some feature'`)
+4. Push to the branch (`git push origin my-new-feature`)
+5. Create a new Pull Request
 
 ## License
 
