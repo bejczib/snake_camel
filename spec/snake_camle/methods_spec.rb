@@ -11,12 +11,13 @@ describe SnakeCamel::Methods do
         { input: 'AB', output: 'ab' },
         { input: 'TheDog is', output: 'the_dog is' }
       ].each do |hash|
-        let(:input) { hash[:input] }
-        let(:output) { hash[:output] }
+        context "whenn input is #{hash[:input]}" do
+          let(:input) { hash[:input] }
+          let(:output) { hash[:output] }
 
-        it "converts #{hash[:input]} to #{hash[:output]}" do
-          expect(SnakeCamel::Methods.snakecase(input)).to eq output
-
+          it "converts #{hash[:input]} to #{hash[:output]}" do
+            expect(SnakeCamel::Methods.snakecase(input)).to eq output
+          end
         end
       end
     end
@@ -28,15 +29,15 @@ describe SnakeCamel::Methods do
         { input: 'ab', output: 'Ab' },
         { input: 'the_dog is', output: 'TheDog is' }
       ].each do |hash|
-        let(:input) { hash[:input] }
-        let(:output) { hash[:output] }
-
-        it "converts #{hash[:input]} to #{hash[:output]}" do
-          expect(SnakeCamel::Methods.camelcase(input)).to eq output
-
+        context "whenn input is #{hash[:input]}" do
+          let(:input) { hash[:input] }
+          let(:output) { hash[:output] }
+          it "converts #{hash[:input]} to #{hash[:output]}" do
+            expect(SnakeCamel::Methods.camelcase(input)).to eq output
+          end
         end
       end
     end
-  end
 
+  end
 end
