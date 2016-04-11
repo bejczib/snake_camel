@@ -54,23 +54,23 @@ require 'snake_camel/instance_methods'
 foo = 'FooBar'
 foo.extend SnakeCamel::InstanceMethods
 
-foo.snakecase #=> foo_bar
+foo.snakecase #=> 'foo_bar'
 
 or
 
 foo = 'foo_bar'
 foo.extend SnakeCamel::InstanceMethods
 
-foo.camelcase #=> FooBar
+foo.camelcase #=> 'FooBar'
 ```
 - And you can use it like a regular method:
 
 ```ruby
 require 'snake_camel/methods'
 
-SnakeCamel::Methods.snakecase('FooBar') #=> foo_bar
+SnakeCamel::Methods.snakecase('FooBar') #=> 'foo_bar'
 
-SnakeCamel::Methods.camelcase('foo_bar') #=> FooBar
+SnakeCamel::Methods.camelcase('foo_bar') #=> 'FooBar'
 ```
 
 
