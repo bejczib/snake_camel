@@ -21,9 +21,20 @@ Or install it yourself as:
 
 ## Usage
 
+  ### Available methods:
+
+  - snakecase
+
+  - snakecase!
+
+  - camelcase
+
+  - camelcase!
+
+
   You have several ways to use it, it's pretty simple. Choose one, based on your need!
 
-  - If you don't care about the 'how':
+  - If you don't care about what's under the hood:
 
   ```ruby
   require 'snake_camel'
@@ -61,6 +72,7 @@ SnakeCamel::Methods.snakecase('FooBar') #=> foo_bar
 
 SnakeCamel::Methods.camelcase('foo_bar') #=> FooBar
 ```
+
 
 ## Creator's notes
 
