@@ -39,5 +39,24 @@ describe SnakeCamel::Methods do
       end
     end
 
+    describe "#snakecase!" do
+      [
+        { input: 'ApplePeach', output: 'apple_peach' },
+        { input: 'apple7Peach', output: 'apple7_peach' },
+        { input: 'AB', output: 'ab' },
+        { input: 'TheDog is', output: 'the_dog is' }
+      ].each do |hash|
+        context "whenn input is #{hash[:input]}" do
+          let(:input) { hash[:input] }
+          let(:output) { hash[:output] }
+
+          it "converts #{hash[:input]} to #{hash[:output]}" do
+            SnakeCamel::Methods.snakecase!(input)
+            expect(input).to eq output
+          end
+        end
+      end
+    end
+
   end
 end

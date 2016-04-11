@@ -11,8 +11,6 @@ describe SnakeCamel::InstanceMethods do
   context 'when snake_camel/instance_methods is required' do
 
     describe "#snakecase" do
-
-
       [
         { input: 'ApplePeach', output: 'apple_peach' },
         { input: 'apple7Peach', output: 'apple7_peach' },
@@ -44,6 +42,26 @@ describe SnakeCamel::InstanceMethods do
 
           it "converts #{hash[:input]} to #{hash[:output]}" do
             expect(test_obj.camelcase).to eq output
+          end
+
+        end
+      end
+    end
+
+    describe "#snakecase!" do
+      [
+        { input: 'ApplePeach', output: 'apple_peach' },
+        { input: 'apple7Peach', output: 'apple7_peach' },
+        { input: 'AB', output: 'ab' },
+        { input: 'TheDog is', output: 'the_dog is' }
+      ].each do |hash|
+        context "when test_obj is #{hash[:input]}" do
+          let(:test_obj) { hash[:input] }
+          let(:output) { hash[:output] }
+
+          it "converts #{hash[:input]} to #{hash[:output]}" do
+            test_obj.snakecase!
+            expect(test_obj).to eq output
           end
 
         end

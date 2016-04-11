@@ -7,6 +7,10 @@ module SnakeCamel
       SnakeCamel::Methods.snakecase(self)
     end
 
+    def snakecase!
+      SnakeCamel::Methods.snakecase!(self)
+    end
+
     def camelcase
       SnakeCamel::Methods.camelcase(self)
     end
