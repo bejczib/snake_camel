@@ -14,5 +14,10 @@ module SnakeCamel
     def camelcase
       SnakeCamel::Methods.camelcase(self)
     end
+
+    def camelcase!
+      SnakeCamel::Methods.camelcase!(self)
+    end
+
   end
 end

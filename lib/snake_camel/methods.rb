@@ -15,5 +15,9 @@ module SnakeCamel
       string.to_s.split('_').each { |e| e.capitalize! }.join
     end
 
+    def camelcase!(string)
+      string.replace(camelcase(string))
+    end
+
   end
 end

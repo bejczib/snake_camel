@@ -50,8 +50,26 @@ describe SnakeCamel::Methods do
           let(:input) { hash[:input] }
           let(:output) { hash[:output] }
 
-          it "converts #{hash[:input]} to #{hash[:output]}" do
+          it "converts #{hash[:input]} itself to #{hash[:output]}" do
             SnakeCamel::Methods.snakecase!(input)
+            expect(input).to eq output
+          end
+        end
+      end
+    end
+
+    describe '#camelcase!' do
+      [
+        { input: 'apple_peach', output: 'ApplePeach' },
+        { input: 'apple7_peach', output: 'Apple7Peach' },
+        { input: 'ab', output: 'Ab' },
+        { input: 'the_dog is', output: 'TheDog is' }
+      ].each do |hash|
+        context "whenn input is #{hash[:input]}" do
+          let(:input) { hash[:input] }
+          let(:output) { hash[:output] }
+          it "converts #{hash[:input]} itself to #{hash[:output]}" do
+            SnakeCamel::Methods.camelcase!(input)
             expect(input).to eq output
           end
         end
