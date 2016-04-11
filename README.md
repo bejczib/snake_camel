@@ -19,9 +19,7 @@ Or install it yourself as:
     $ gem install snake_camel
 
 
-## Usage
-
-  ### Available methods:
+## Methods
 
   - snakecase
 
@@ -31,6 +29,8 @@ Or install it yourself as:
 
   - camelcase!
 
+
+## Usage
 
   You have several ways to use it, it's pretty simple. Choose one, based on your need!
 
