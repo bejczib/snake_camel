@@ -12,7 +12,7 @@ module SnakeCamel
     end
 
     def camelcase(string)
-      string.to_s.split('_').each { |e| e.capitalize! }.join
+      string.to_s.split('_').map(&:capitalize).join
     end
 
     def camelcase!(string)
