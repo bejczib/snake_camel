@@ -1,9 +1,8 @@
 require 'spec_helper'
 
+describe 'core_ext' do
 
-describe SnakeCamel::Methods do
-  context 'when snake_camel/methods is required' do
-
+  context 'when snake_camel is required' do
     describe "#snakecase" do
       [
         { input: 'ApplePeach', output: 'apple_peach' },
@@ -16,7 +15,7 @@ describe SnakeCamel::Methods do
           let(:output) { hash[:output] }
 
           it "converts #{hash[:input]} to #{hash[:output]}" do
-            expect(SnakeCamel::Methods.snakecase(input)).to eq output
+            expect(input.snakecase).to eq output
           end
         end
       end
@@ -32,8 +31,9 @@ describe SnakeCamel::Methods do
         context "whenn input is #{hash[:input]}" do
           let(:input) { hash[:input] }
           let(:output) { hash[:output] }
+
           it "converts #{hash[:input]} to #{hash[:output]}" do
-            expect(SnakeCamel::Methods.camelcase(input)).to eq output
+            expect(input.camelcase).to eq output
           end
         end
       end
@@ -51,7 +51,7 @@ describe SnakeCamel::Methods do
           let(:output) { hash[:output] }
 
           it "converts #{hash[:input]} itself to #{hash[:output]}" do
-            SnakeCamel::Methods.snakecase!(input)
+            input.snakecase!
             expect(input).to eq output
           end
         end
@@ -68,9 +68,28 @@ describe SnakeCamel::Methods do
         context "whenn input is #{hash[:input]}" do
           let(:input) { hash[:input] }
           let(:output) { hash[:output] }
+
           it "converts #{hash[:input]} itself to #{hash[:output]}" do
-            SnakeCamel::Methods.camelcase!(input)
+            input.camelcase!
             expect(input).to eq output
+          end
+        end
+      end
+    end
+
+    describe '#constant_name' do
+      [
+          { input: 'apple_peach', output: 'ApplePeach' },
+          { input: 'apple7_peach', output: 'Apple7Peach' },
+          { input: 'hello/world_sup', output: 'Hello::WorldSup' },
+          { input: 'bello/hello/world_sup', output: 'Bello::Hello::WorldSup' },
+      ].each do |hash|
+        context "whenn input is #{hash[:input]}" do
+          let(:input) { hash[:input] }
+          let(:output) { hash[:output] }
+
+          it "converts #{hash[:input]} to #{hash[:output]}" do
+            expect(input.constant_name).to eq output
           end
         end
       end

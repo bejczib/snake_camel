@@ -1,8 +1,15 @@
 require 'spec_helper'
 
-describe 'core_ext' do
+describe SnakeCamel::InstanceMethods do
 
-  context 'when snake_camel is required' do
+      let(:test_obj) { '' }
+
+      before do
+        test_obj.extend SnakeCamel::InstanceMethods
+      end
+
+  context 'when snake_camel/instance_methods is required' do
+
     describe "#snakecase" do
       [
         { input: 'ApplePeach', output: 'apple_peach' },
@@ -10,13 +17,14 @@ describe 'core_ext' do
         { input: 'AB', output: 'ab' },
         { input: 'TheDog is', output: 'the_dog is' }
       ].each do |hash|
-        context "whenn input is #{hash[:input]}" do
-          let(:input) { hash[:input] }
+        context "when test_obj is #{hash[:input]}" do
+          let(:test_obj) { hash[:input] }
           let(:output) { hash[:output] }
 
           it "converts #{hash[:input]} to #{hash[:output]}" do
-            expect(input.snakecase).to eq output
+            expect(test_obj.snakecase).to eq output
           end
+
         end
       end
     end
@@ -28,32 +36,34 @@ describe 'core_ext' do
         { input: 'ab', output: 'Ab' },
         { input: 'the_dog is', output: 'TheDog is' }
       ].each do |hash|
-        context "whenn input is #{hash[:input]}" do
-          let(:input) { hash[:input] }
+        context "whenn test_obj is #{hash[:input]}" do
+          let(:test_obj) { hash[:input] }
           let(:output) { hash[:output] }
 
           it "converts #{hash[:input]} to #{hash[:output]}" do
-            expect(input.camelcase).to eq output
+            expect(test_obj.camelcase).to eq output
           end
+
         end
       end
     end
 
-    describe "#snakecase!" do
+    describe '#snakecase!' do
       [
         { input: 'ApplePeach', output: 'apple_peach' },
         { input: 'apple7Peach', output: 'apple7_peach' },
         { input: 'AB', output: 'ab' },
         { input: 'TheDog is', output: 'the_dog is' }
       ].each do |hash|
-        context "whenn input is #{hash[:input]}" do
-          let(:input) { hash[:input] }
+        context "when test_obj is #{hash[:input]}" do
+          let(:test_obj) { hash[:input] }
           let(:output) { hash[:output] }
 
           it "converts #{hash[:input]} itself to #{hash[:output]}" do
-            input.snakecase!
-            expect(input).to eq output
+            test_obj.snakecase!
+            expect(test_obj).to eq output
           end
+
         end
       end
     end
@@ -65,14 +75,34 @@ describe 'core_ext' do
         { input: 'ab', output: 'Ab' },
         { input: 'the_dog is', output: 'TheDog is' }
       ].each do |hash|
-        context "whenn input is #{hash[:input]}" do
-          let(:input) { hash[:input] }
+        context "whenn test_obj is #{hash[:input]}" do
+          let(:test_obj) { hash[:input] }
           let(:output) { hash[:output] }
 
           it "converts #{hash[:input]} itself to #{hash[:output]}" do
-            input.camelcase!
-            expect(input).to eq output
+            test_obj.camelcase!
+            expect(test_obj).to eq output
           end
+
+        end
+      end
+    end
+
+    describe '#constant_name' do
+      [
+          { input: 'apple_peach', output: 'ApplePeach' },
+          { input: 'apple7_peach', output: 'Apple7Peach' },
+          { input: 'hello/world_sup', output: 'Hello::WorldSup' },
+          { input: 'bello/hello/world_sup', output: 'Bello::Hello::WorldSup' }
+      ].each do |hash|
+        context "whenn test_obj is #{hash[:input]}" do
+          let(:test_obj) { hash[:input] }
+          let(:output) { hash[:output] }
+
+          it "converts #{hash[:input]} itself to #{hash[:output]}" do
+            expect(test_obj.constant_name).to eq output
+          end
+
         end
       end
     end

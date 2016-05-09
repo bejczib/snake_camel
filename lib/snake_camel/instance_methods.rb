@@ -19,5 +19,9 @@ module SnakeCamel
       SnakeCamel::Methods.camelcase!(self)
     end
 
+    def constant_name
+      SnakeCamel::Methods.constant_name(self)
+    end
+
   end
 end

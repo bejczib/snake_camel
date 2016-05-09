@@ -1,4 +1,3 @@
-
 module SnakeCamel
   module Methods
     extend self
@@ -17,6 +16,10 @@ module SnakeCamel
 
     def camelcase!(string)
       string.replace(camelcase(string))
+    end
+
+    def constant_name(string)
+      string.split(File::Separator).map { |part| camelcase(part) }.join('::')
     end
 
   end
