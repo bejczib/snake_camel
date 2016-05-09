@@ -29,6 +29,8 @@ Or install it yourself as:
 
   - camelcase!
 
+  - constant_name
+
 
 ## Usage
 
