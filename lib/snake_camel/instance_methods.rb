@@ -23,5 +23,9 @@ module SnakeCamel
       SnakeCamel::Methods.constant_name(self)
     end
 
+    def path_name
+      SnakeCamel::Methods.path_name(self)
+    end
+
   end
 end

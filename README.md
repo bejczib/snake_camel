@@ -29,7 +29,9 @@ Or install it yourself as:
 
   - camelcase!
 
-  - constant_name
+  - constant_name ('hello/world_sup' #=> Hello::WorldSup)
+
+  - path_name ('Hello::WorldSup #=> hello/world_sup')
 
 
 ## Usage

@@ -99,5 +99,24 @@ describe SnakeCamel::Methods do
       end
     end
 
+    describe '#path_name' do
+      subject{ SnakeCamel::Methods.path_name(input) }
+
+      [
+          { input: 'Hello::WorldSup', output: 'hello/world_sup' },
+          { input: 'Bello::Hello::WorldSup', output: 'bello/hello/world_sup' },
+          { input: 'Bello', output: '/bello' },
+          { input: '::Bello', output: '/bello' }
+      ].each do |hash|
+        context "whenn input is #{hash[:input]}" do
+          let(:input) { hash[:input] }
+          let(:output) { hash[:output] }
+          it "converts #{hash[:input]} to #{hash[:output]}" do
+            is_expected.to eq output
+          end
+        end
+      end
+    end
+
   end
 end

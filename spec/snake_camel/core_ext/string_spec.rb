@@ -95,5 +95,24 @@ describe 'core_ext' do
       end
     end
 
+    describe '#path_name' do
+      [
+          { input: 'Hello::WorldSup', output: 'hello/world_sup' },
+          { input: 'Bello::Hello::WorldSup', output: 'bello/hello/world_sup' },
+          { input: 'Bello', output: '/bello' },
+          { input: '::Bello', output: '/bello' }
+      ].each do |hash|
+        context "whenn input is #{hash[:input]}" do
+          let(:input) { hash[:input] }
+          let(:output) { hash[:output] }
+
+          it "converts #{hash[:input]} itself to #{hash[:output]}" do
+            expect(input.path_name).to eq output
+          end
+
+        end
+      end
+    end
+
   end
 end

@@ -22,5 +22,10 @@ module SnakeCamel
       string.split(File::Separator).map { |part| camelcase(part) }.join('::')
     end
 
+    def path_name(camelcase_string)
+      return snakecase(camelcase_string).insert(0, File::Separator) unless camelcase_string.match(/::/)
+      camelcase_string.split("::").map { |part| snakecase(part) }.join(File::Separator)
+    end
+
   end
 end

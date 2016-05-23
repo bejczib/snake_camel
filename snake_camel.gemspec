@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Balint Bejczi"]
   spec.email         = ["bejczi.balint@gmail.com"]
 
-  spec.summary       = %q{conversation between CamelCase and snake_case}
+  spec.summary       = %q{converion between CamelCase and snake_case}
   spec.description   = %q{converts CamelCase to snake_case and backwardss}
   spec.homepage      = 'https://github.com/bejczib/snake_camel'
   spec.license       = "MIT"
