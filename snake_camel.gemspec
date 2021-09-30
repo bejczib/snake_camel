@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["bejczi.balint@gmail.com"]
 
   spec.summary       = %q{converion between CamelCase and snake_case}
-  spec.description   = %q{converts CamelCase to snake_case and backwardss}
+  spec.description   = %q{converts CamelCase to snake_case and backwards}
   spec.homepage      = 'https://github.com/bejczib/snake_camel'
   spec.license       = "MIT"
 
@@ -19,9 +19,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.11"
-  spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "bundler", ">= 2.2.10"
+  spec.add_development_dependency "rake", ">= 12.3.3"
   spec.add_development_dependency "rspec", "~> 3.0"
 end
-
-
