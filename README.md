@@ -1,5 +1,5 @@
 # SnakeCamel
-
+ 
 This Gem provides several ways for conversation between CamalCase and snake_case.
 
 ## Installation
