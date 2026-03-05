@@ -2,7 +2,7 @@
 
 This Gem provides several ways for conversation between CamalCase and snake_case.
 
-## Installation
+## Installation 
 
 Add this line to your application's Gemfile:
 
